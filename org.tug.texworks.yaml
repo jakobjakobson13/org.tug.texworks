@@ -1,6 +1,6 @@
 app-id: org.tug.texworks
 runtime: org.kde.Platform
-runtime-version: '5.13'
+runtime-version: '5.14'
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.texlive
@@ -33,8 +33,8 @@ modules:
   - name: poppler # PDF rendering library used by TeXworks
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-0.74.0.tar.xz
-        sha256: 92e09fd3302567fd36146b36bb707db43ce436e8841219025a82ea9fb0076b2f
+        url: https://poppler.freedesktop.org/poppler-0.86.1.tar.xz
+        sha256: af630a277c8e194c31339c5446241834aed6ed3d4b4dc7080311e51c66257f6c
     buildsystem: cmake-ninja
     config-opts:
       - -DENABLE_GOBJECT_INTROSPECTION=OFF
@@ -79,8 +79,8 @@ modules:
   - name: libreoffice-dictionaries # Spell checking dictionaries
     sources:
       - type: archive
-        url: https://github.com/LibreOffice/dictionaries/archive/libreoffice-6.2.2.2.tar.gz
-        sha256: 986ab865496435689e8a712e0378cb1855f98eafa3182d46e1444bfe6148e423
+        url: https://github.com/LibreOffice/dictionaries/archive/libreoffice-6.4.2.2.tar.gz
+        sha256: 1d2418bc06f11d8c53551c4702b0e471a42eb041f990c122b0080401f39ef5e8
     buildsystem: simple
     build-commands:
       # Only install languages the TeXworks UI has been translated to
@@ -97,8 +97,8 @@ modules:
   - name: manual # The TeXworks manual
     sources:
       - type: archive
-        url: https://github.com/TeXworks/manual/releases/download/2019-03-16/TeXworks-manual-html.zip
-        sha256: 34ed73d0996dd15bf8c2844712ac882be2901257dfb6f31df0b5adb0f2c4ff18
+        url: https://github.com/TeXworks/manual/releases/download/2020-03-15/TeXworks-manual-html-20200229221817-2a3b975.zip
+        sha256: 55009663ec951f3b2f117e167a91c4893de71f79cea89e19b92b6a349e9546fd
     buildsystem: simple
     build-commands:
       - install -d /app/share/doc/texworks-help
@@ -108,19 +108,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/TeXworks/texworks.git
-        tag: release-0.6.3
-        commit: a2470cac986bab5c971ab80799b4c98cc055a6f7
+        tag: release-0.6.4
+        commit: 982c11c12ac03e1f6aab69d0054c0a72449223da
       - type: patch
         path: texworks.patch
-      - type: file
-        path: TeXworks-64.png
-      - type: file
-        path: TeXworks-128.png
     buildsystem: cmake-ninja
     config-opts:
       - -DTW_BUILD_ID=flatpak
-      - -DTeXworks_ICON_DIR=/share/icons/hicolor/512x512/apps
       - -DTeXworks_DIC_DIR=/app/share/hunspell
-    post-install:
-      - install -D TeXworks-64.png /app/share/icons/hicolor/64x64/apps/TeXworks.png
-      - install -D TeXworks-128.png /app/share/icons/hicolor/128x128/apps/TeXworks.png
