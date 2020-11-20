@@ -2,8 +2,6 @@ app-id: org.tug.texworks
 runtime: org.kde.Platform
 runtime-version: '5.14'
 sdk: org.kde.Sdk
-sdk-extensions:
-  - org.freedesktop.Sdk.Extension.texlive
 command: texworks
 rename-desktop-file: texworks.desktop
 rename-appdata-file: texworks.appdata.xml
@@ -17,15 +15,13 @@ finish-args:
   - --env=TEXMFCACHE=$XDG_CACHE_HOME
   - --env=SESSION_MANAGER= # required to avoid Qt warning
   - --env=PATH=/app/texlive/bin/x86_64-linux:/app/bin:/usr/bin # required to find texlive binaries
-modules:
-  - name: texlive
-    buildsystem: simple
-    build-commands:
-      # Don't use /usr/lib/sdk/texlive/install.sh as that copies everthing into
-      # /app rather than a subdirectory, causing massive clutter of that folder
-      - install -d /app/texlive
-      - cp -ra /usr/lib/sdk/texlive/* /app/texlive
+add-extensions:
+  org.freedesktop.Sdk.Extension.texlive:
+    version: 19.08
+    directory: /app/texlive
+    no-autodownload: true      
 
+modules:
   - shared-modules/lua5.3/lua-5.3.5.json # required for TeXworks's lua scripting plugin
 
   - shared-modules/openjpeg/openjpeg.json # required by poppler
