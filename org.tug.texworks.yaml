@@ -17,9 +17,9 @@ finish-args:
   - --env=PATH=/app/texlive/bin/x86_64-linux:/app/bin:/usr/bin # required to find texlive binaries
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
-    version: 19.08
-    directory: /app/texlive
-    no-autodownload: true      
+    version: '19.08'
+    directory: texlive # this is relative to /app
+    no-autodownload: true
 
 modules:
   - shared-modules/lua5.3/lua-5.3.5.json # required for TeXworks's lua scripting plugin
@@ -89,6 +89,11 @@ modules:
             install -D -t /app/share/hunspell "${AFF}";
           done;
         done
+
+  - name: texlive-mountpoint # Mount point for org.freedesktop.Sdk.Extension.texlive
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/texlive
 
   - name: manual # The TeXworks manual
     sources:
