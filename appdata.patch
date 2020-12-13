@@ -1,0 +1,15 @@
+--- texworks.appdata.xml	2020-12-13 15:14:46.000817552 +0100
++++ texworks.appdata.xml.flathub	2020-12-13 15:19:13.189529694 +0100
+@@ -45,6 +45,12 @@
+ 			Among other things, TeXworks features an integrated PDF previewer, synchronization
+ 			between the TeX files and the PDF output, and an extensible scripting interface.
+ 		</p>
++		<p>
++			You can either use your local tex distribution or the tex distribution provided by
++			flathub by installing it via
++
++			flatpak install org.freedesktop.Sdk.Extension.texlive//19.08
++		</p>
+ 		<p xml:lang="af">
+ 			TeXworks is 'n omgewing vir die skep van TeX (LaTeX, ConTeXt, ens.) dokumente, met 'n
+ 			Unicode-gebaseerde, TeX-bewuste redigeerder, geïntegreerde PDF besigtiger, en 'n skoon,
