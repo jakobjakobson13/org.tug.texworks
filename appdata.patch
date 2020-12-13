@@ -2,13 +2,12 @@ diff --git a/texworks.appdata.xml b/texworks.appdata.xml.flathub
 index 1e974a1..0dffdc8 100755
 --- a/texworks.appdata.xml
 +++ b/texworks.appdata.xml.flathub
-@@ -45,6 +45,12 @@
+@@ -45,6 +45,11 @@
  			Among other things, TeXworks features an integrated PDF previewer, synchronization
  			between the TeX files and the PDF output, and an extensible scripting interface.
  		</p>
 +		<p>
-+			You can either use your local tex distribution or the tex distribution provided by
-+			flathub by installing it via
++			To use the tex distribution provided by flathub, install it via
 +
 +			flatpak install org.freedesktop.Sdk.Extension.texlive//19.08
 +		</p>
