@@ -115,6 +115,8 @@ modules:
         path: texworks.patch
       - type: patch
         path: binpaths.patch
+      - type: patch
+        path: appdata.patch
     buildsystem: cmake-ninja
     config-opts:
       - -DTW_BUILD_ID=flatpak
