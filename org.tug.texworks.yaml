@@ -113,6 +113,8 @@ modules:
         commit: 649699a09d989aaab8d3fec308cc3798d567f7d9
       - type: patch
         path: texworks.patch
+      - type: patch
+        path: binpaths.patch
     buildsystem: cmake-ninja
     config-opts:
       - -DTW_BUILD_ID=flatpak
