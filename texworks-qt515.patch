@@ -1,0 +1,12 @@
+diff --git a/modules/QtPDF/src/PDFBackend.cpp b/modules/QtPDF/src/PDFBackend.cpp
+index 0305d87..500d20a 100644
+--- a/modules/QtPDF/src/PDFBackend.cpp
++++ b/modules/QtPDF/src/PDFBackend.cpp
+@@ -14,6 +14,7 @@
+ 
+ #include <PDFBackend.h>
+ #include <QPainter>
++#include <QPainterPath>
+ #include <QApplication>
+ 
+ namespace QtPDF {

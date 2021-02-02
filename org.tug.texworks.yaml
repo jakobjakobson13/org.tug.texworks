@@ -1,6 +1,6 @@
 app-id: org.tug.texworks
 runtime: org.kde.Platform
-runtime-version: '5.14'
+runtime-version: '5.15'
 sdk: org.kde.Sdk
 command: texworks
 rename-desktop-file: texworks.desktop
@@ -14,10 +14,10 @@ finish-args:
   - --filesystem=host
   - --env=TEXMFCACHE=$XDG_CACHE_HOME
   - --env=SESSION_MANAGER= # required to avoid Qt warning
-  - --env=PATH=/app/texlive/bin/x86_64-linux:/app/bin:/usr/bin # required to find texlive binaries
+  - --env=PATH=/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux:/app/bin:/usr/bin # required to find texlive binaries
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
-    version: '19.08'
+    version: '20.08'
     directory: texlive # this is relative to /app
     no-autodownload: true
 
@@ -113,6 +113,8 @@ modules:
         commit: 649699a09d989aaab8d3fec308cc3798d567f7d9
       - type: patch
         path: texworks.patch
+      - type: patch
+        path: texworks-qt515.patch
       - type: patch
         path: appdata.patch
     buildsystem: cmake-ninja
