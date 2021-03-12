@@ -24,13 +24,11 @@ add-extensions:
 modules:
   - shared-modules/lua5.3/lua-5.3.5.json # required for TeXworks's lua scripting plugin
 
-  - shared-modules/openjpeg/openjpeg.json # required by poppler
-
   - name: poppler # PDF rendering library used by TeXworks
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-0.86.1.tar.xz
-        sha256: af630a277c8e194c31339c5446241834aed6ed3d4b4dc7080311e51c66257f6c
+        url: https://poppler.freedesktop.org/poppler-21.03.0.tar.xz
+        sha256: fd51ead4aac1d2f4684fa6e7b0ec06f0233ed21667e720a4e817e4455dd63d27
     buildsystem: cmake-ninja
     config-opts:
       - -DENABLE_GOBJECT_INTROSPECTION=OFF
@@ -45,8 +43,8 @@ modules:
   - name: poppler-data # Encoding data for CJK documents
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-data-0.4.9.tar.gz
-        sha256: 1f9c7e7de9ecd0db6ab287349e31bf815ca108a5a175cf906a90163bdbe32012
+        url: https://poppler.freedesktop.org/poppler-data-0.4.10.tar.gz
+        sha256: 6e2fcef66ec8c44625f94292ccf8af9f1d918b410d5aa69c274ce67387967b30
     buildsystem: simple
     build-commands:
       - make prefix=/app install
@@ -75,8 +73,8 @@ modules:
   - name: libreoffice-dictionaries # Spell checking dictionaries
     sources:
       - type: archive
-        url: https://github.com/LibreOffice/dictionaries/archive/libreoffice-6.4.2.2.tar.gz
-        sha256: 1d2418bc06f11d8c53551c4702b0e471a42eb041f990c122b0080401f39ef5e8
+        url: https://github.com/LibreOffice/dictionaries/archive/libreoffice-7.1.2.1.tar.gz
+        sha256: ab6d8eb7071b2bc5f8a2df82a22069714d07cc5f7afa9073d9dc4574a8d651b3
     buildsystem: simple
     build-commands:
       # Only install languages the TeXworks UI has been translated to
@@ -98,8 +96,8 @@ modules:
   - name: manual # The TeXworks manual
     sources:
       - type: archive
-        url: https://github.com/TeXworks/manual/releases/download/2020-03-15/TeXworks-manual-html-20200229221817-2a3b975.zip
-        sha256: 55009663ec951f3b2f117e167a91c4893de71f79cea89e19b92b6a349e9546fd
+        url: https://github.com/TeXworks/manual/releases/download/2021-03-08/TeXworks-manual-html-20210308173322-7d24168.zip
+        sha256: b3fea63be210367f24d2d0a70c8e272f107edc4f53e241ec19c61e63eee99569
     buildsystem: simple
     build-commands:
       - install -d /app/share/doc/texworks-help
@@ -109,12 +107,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/TeXworks/texworks.git
-        tag: release-0.6.5
-        commit: 649699a09d989aaab8d3fec308cc3798d567f7d9
-      - type: patch
-        path: texworks.patch
-      - type: patch
-        path: texworks-qt515.patch
+        tag: release-0.6.6
+        commit: 24442ac0032aa3697f289984ebfb9c05b00c10c6
       - type: patch
         path: appdata.patch
     buildsystem: cmake-ninja
