@@ -1,6 +1,6 @@
 app-id: org.tug.texworks
 runtime: org.kde.Platform
-runtime-version: '5.15'
+runtime-version: '5.15-21.08'
 sdk: org.kde.Sdk
 command: texworks
 rename-desktop-file: texworks.desktop
@@ -17,18 +17,28 @@ finish-args:
   - --env=PATH=/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux:/app/bin:/usr/bin # required to find texlive binaries
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
-    version: '20.08'
+    version: '21.08'
     directory: texlive # this is relative to /app
     no-autodownload: true
 
 modules:
   - shared-modules/lua5.3/lua-5.3.5.json # required for TeXworks's lua scripting plugin
+  
+  - name: boost # Build requirement of poppler
+    sources:
+      - type: archive
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.77.0/source/boost_1_77_0.tar.bz2
+        sha256: fc9f85fc030e233142908241af7a846e60630aa7388de9a5fafb1f3a26840854
+    buildsystem: simple
+    build-commands:
+      - ./bootstrap.sh --prefix=/app --with-libraries=system
+      - ./b2 install
 
   - name: poppler # PDF rendering library used by TeXworks
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-21.03.0.tar.xz
-        sha256: fd51ead4aac1d2f4684fa6e7b0ec06f0233ed21667e720a4e817e4455dd63d27
+        url: https://poppler.freedesktop.org/poppler-21.10.0.tar.xz
+        sha256: 964b5b16290fbec3fae57c2a5bcdea49bb0736bd750c3a3711c47995c9efc394
     buildsystem: cmake-ninja
     config-opts:
       - -DENABLE_GOBJECT_INTROSPECTION=OFF
@@ -43,8 +53,8 @@ modules:
   - name: poppler-data # Encoding data for CJK documents
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-data-0.4.10.tar.gz
-        sha256: 6e2fcef66ec8c44625f94292ccf8af9f1d918b410d5aa69c274ce67387967b30
+        url: https://poppler.freedesktop.org/poppler-data-0.4.11.tar.gz
+        sha256: 2cec05cd1bb03af98a8b06a1e22f6e6e1a65b1e2f3816cb3069bb0874825f08c
     buildsystem: simple
     build-commands:
       - make prefix=/app install
