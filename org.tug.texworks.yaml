@@ -29,6 +29,11 @@ modules:
       - type: archive
         url: https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.bz2
         sha256: 8681f175d4bdb26c52222665793eef08490d7758529330f98d3b29dd0735bccc
+        x-checker-data:
+          type: anitya
+          project-id: 6845
+          stable-only: true
+          url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_$patch.tar.bz2
     buildsystem: simple
     build-commands:
       - ./bootstrap.sh --prefix=/app --with-libraries=system
@@ -39,6 +44,11 @@ modules:
       - type: archive
         url: https://poppler.freedesktop.org/poppler-22.02.0.tar.xz
         sha256: e390c8b806f6c9f0e35c8462033e0a738bb2460ebd660bdb8b6dca01556193e1
+        x-checker-data:
+          type: anitya
+          project-id: 3686
+          stable-only: true
+          url-template: https://poppler.freedesktop.org/poppler-$version.tar.xz
     buildsystem: cmake-ninja
     config-opts:
       - -DENABLE_GOBJECT_INTROSPECTION=OFF
@@ -55,6 +65,11 @@ modules:
       - type: archive
         url: https://poppler.freedesktop.org/poppler-data-0.4.11.tar.gz
         sha256: 2cec05cd1bb03af98a8b06a1e22f6e6e1a65b1e2f3816cb3069bb0874825f08c
+        x-checker-data:
+          type: anitya
+          project-id: 3687
+          stable-only: true
+          url-template: https://poppler.freedesktop.org/poppler-data-$version.tar.gz
     buildsystem: simple
     build-commands:
       - make prefix=/app install
@@ -66,6 +81,11 @@ modules:
       - type: archive
         url: https://github.com/hunspell/hunspell/archive/v1.7.0.tar.gz
         sha256: bb27b86eb910a8285407cf3ca33b62643a02798cf2eef468c0a74f6c3ee6bc8a
+        x-checker-data:
+          type: anitya
+          project-id: 1343
+          stable-only: true
+          url-template: https://github.com/hunspell/hunspell/archive/v$version.tar.gz
     buildsystem: simple
     build-commands:
       - autoreconf -vfi
