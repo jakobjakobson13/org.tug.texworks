@@ -1,6 +1,6 @@
 app-id: org.tug.texworks
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: 6.4
 sdk: org.kde.Sdk
 command: texworks
 rename-desktop-file: texworks.desktop
@@ -17,23 +17,23 @@ finish-args:
   - --env=PATH=/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux:/app/bin:/usr/bin # required to find texlive binaries
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
-    version: '21.08'
+    version: 22.08
     directory: texlive # this is relative to /app
     no-autodownload: true
 
 modules:
   - shared-modules/lua5.4/lua-5.4.json # required for TeXworks's lua scripting plugin
-  
+
   - name: boost # Build requirement of poppler
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.78.0/source/boost_1_78_0.tar.bz2
-        sha256: 8681f175d4bdb26c52222665793eef08490d7758529330f98d3b29dd0735bccc
+        url: https://github.com/boostorg/boost/releases/download/boost-1.81.0/boost-1.81.0.tar.xz
+        sha256: 06bc525a392650eb6248f40a13f40112b6c485eec7103b6dcde7196f2a3570e0
         x-checker-data:
           type: anitya
           project-id: 6845
           stable-only: true
-          url-template: https://boostorg.jfrog.io/artifactory/main/release/$version/source/boost_${major}_${minor}_$patch.tar.bz2
+          url-template: https://github.com/boostorg/boost/releases/download/boost-$version/boost-$version.tar.xz
     buildsystem: simple
     build-commands:
       - ./bootstrap.sh --prefix=/app --with-libraries=system
@@ -42,8 +42,8 @@ modules:
   - name: poppler # PDF rendering library used by TeXworks
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-22.02.0.tar.xz
-        sha256: e390c8b806f6c9f0e35c8462033e0a738bb2460ebd660bdb8b6dca01556193e1
+        url: https://poppler.freedesktop.org/poppler-23.02.0.tar.xz
+        sha256: 3315dda270fe2b35cf1f41d275948c39652fa863b90de0766f6b293d9a558fc9
         x-checker-data:
           type: anitya
           project-id: 3686
@@ -63,8 +63,8 @@ modules:
   - name: poppler-data # Encoding data for CJK documents
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-data-0.4.11.tar.gz
-        sha256: 2cec05cd1bb03af98a8b06a1e22f6e6e1a65b1e2f3816cb3069bb0874825f08c
+        url: https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz
+        sha256: c835b640a40ce357e1b83666aabd95edffa24ddddd49b8daff63adb851cdab74
         x-checker-data:
           type: anitya
           project-id: 3687
@@ -79,8 +79,8 @@ modules:
   - name: hunspell # Spell checking library used by TeXworks
     sources:
       - type: archive
-        url: https://github.com/hunspell/hunspell/archive/v1.7.0.tar.gz
-        sha256: bb27b86eb910a8285407cf3ca33b62643a02798cf2eef468c0a74f6c3ee6bc8a
+        url: https://github.com/hunspell/hunspell/archive/v1.7.2.tar.gz
+        sha256: 69fa312d3586c988789266eaf7ffc9861d9f6396c31fc930a014d551b59bbd6e
         x-checker-data:
           type: anitya
           project-id: 1343
@@ -103,8 +103,8 @@ modules:
   - name: libreoffice-dictionaries # Spell checking dictionaries
     sources:
       - type: archive
-        url: https://github.com/LibreOffice/dictionaries/archive/libreoffice-7.3.1.2.tar.gz
-        sha256: d1a12114ce16ae900d9957abd97a6db08876fc3695f390cea6928afc2a85bb25
+        url: https://github.com/LibreOffice/dictionaries/archive/libreoffice-7.5.1.1.tar.gz
+        sha256: c8a2c005f9a7bc0497d91f8410ab8bb7bbb2041d7ac6afbcded9ef317db1b08d
     buildsystem: simple
     build-commands:
       # Only install languages the TeXworks UI has been translated to
@@ -145,3 +145,4 @@ modules:
     config-opts:
       - -DTW_BUILD_ID=flatpak
       - -DTeXworks_DIC_DIR=/app/share/hunspell
+      - -DQT_DEFAULT_MAJOR_VERSION=6
