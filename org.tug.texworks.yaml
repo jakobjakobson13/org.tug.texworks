@@ -1,6 +1,6 @@
 app-id: org.tug.texworks
 runtime: org.kde.Platform
-runtime-version: 6.4
+runtime-version: '6.4'
 sdk: org.kde.Sdk
 command: texworks
 rename-desktop-file: texworks.desktop
@@ -17,7 +17,7 @@ finish-args:
   - --env=PATH=/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux:/app/bin:/usr/bin # required to find texlive binaries
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
-    version: 22.08
+    version: '22.08'
     directory: texlive # this is relative to /app
     no-autodownload: true
 
