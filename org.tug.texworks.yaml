@@ -42,8 +42,8 @@ modules:
   - name: poppler # PDF rendering library used by TeXworks
     sources:
       - type: archive
-        url: https://poppler.freedesktop.org/poppler-23.02.0.tar.xz
-        sha256: 3315dda270fe2b35cf1f41d275948c39652fa863b90de0766f6b293d9a558fc9
+        url: https://poppler.freedesktop.org/poppler-24.01.0.tar.xz
+        sha256: c7def693a7a492830f49d497a80cc6b9c85cb57b15e9be2d2d615153b79cae08
         x-checker-data:
           type: anitya
           project-id: 3686
@@ -52,6 +52,7 @@ modules:
     buildsystem: cmake-ninja
     config-opts:
       - -DENABLE_GOBJECT_INTROSPECTION=OFF
+      - -DENABLE_QT5=OFF
     cleanup:
       - /bin
       - /include
