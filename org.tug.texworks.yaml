@@ -51,6 +51,9 @@ modules:
           url-template: https://poppler.freedesktop.org/poppler-$version.tar.xz
     buildsystem: cmake-ninja
     config-opts:
+      - -DENABLE_UTILS=OFF
+      - -DENABLE_CPP=OFF
+      - -DENABLE_GLIB=OFF
       - -DENABLE_GOBJECT_INTROSPECTION=OFF
       - -DENABLE_QT5=OFF
     cleanup:
