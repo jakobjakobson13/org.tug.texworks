@@ -27,8 +27,8 @@ modules:
   - name: boost # Build requirement of poppler
     sources:
       - type: archive
-        url: https://github.com/boostorg/boost/releases/download/boost-1.81.0/boost-1.81.0.tar.xz
-        sha256: 06bc525a392650eb6248f40a13f40112b6c485eec7103b6dcde7196f2a3570e0
+        url: https://github.com/boostorg/boost/releases/download/boost-1.84.0/boost-1.84.0.tar.xz
+        sha256: 2e64e5d79a738d0fa6fb546c6e5c2bd28f88d268a2a080546f74e5ff98f29d0e
         x-checker-data:
           type: anitya
           project-id: 6845
