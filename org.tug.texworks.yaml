@@ -17,7 +17,7 @@ finish-args:
   - --env=PATH=/app/texlive/bin/x86_64-linux:/app/texlive/bin/aarch64-linux:/app/bin:/usr/bin # required to find texlive binaries
 add-extensions:
   org.freedesktop.Sdk.Extension.texlive:
-    version: '22.08'
+    version: '23.08'
     directory: texlive # this is relative to /app
     no-autodownload: true
 
