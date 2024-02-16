@@ -1,6 +1,6 @@
 app-id: org.tug.texworks
 runtime: org.kde.Platform
-runtime-version: '6.4'
+runtime-version: '6.6'
 sdk: org.kde.Sdk
 command: texworks
 rename-desktop-file: texworks.desktop
