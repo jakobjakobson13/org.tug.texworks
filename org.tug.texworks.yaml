@@ -107,8 +107,8 @@ modules:
   - name: libreoffice-dictionaries # Spell checking dictionaries
     sources:
       - type: archive
-        url: https://github.com/LibreOffice/dictionaries/archive/libreoffice-7.5.1.1.tar.gz
-        sha256: c8a2c005f9a7bc0497d91f8410ab8bb7bbb2041d7ac6afbcded9ef317db1b08d
+        url: https://github.com/LibreOffice/dictionaries/archive/refs/tags/libreoffice-24.2.1.1.tar.gz
+        sha256: a6d2ef09dab7e8db34342a4dce735db257493c5980e10b21fab2f66b86e453ee
     buildsystem: simple
     build-commands:
       # Only install languages the TeXworks UI has been translated to
