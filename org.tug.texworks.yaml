@@ -130,8 +130,8 @@ modules:
   - name: manual # The TeXworks manual
     sources:
       - type: archive
-        url: https://github.com/TeXworks/manual/releases/download/2021-03-08/TeXworks-manual-html-20210308173322-7d24168.zip
-        sha256: b3fea63be210367f24d2d0a70c8e272f107edc4f53e241ec19c61e63eee99569
+        url: https://github.com/TeXworks/manual/releases/download/2024-02-09/TeXworks-manual-html-20240209214359-496ef4a.zip
+        sha256: 4eb722d214068b38972d1da176db4496d27ca1ca8dd995619d5833cae4b83e9e
     buildsystem: simple
     build-commands:
       - install -d /app/share/doc/texworks-help
