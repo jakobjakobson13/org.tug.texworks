@@ -17,7 +17,7 @@ index 0b190abe..99ab2dda 100644
 +		<p>
 +			To use the tex distribution provided by flathub, install it via
 +
-+			flatpak install org.freedesktop.Sdk.Extension.texlive//22.08
++			flatpak install org.freedesktop.Sdk.Extension.texlive//23.08
 +		</p>
  		<p xml:lang="af">
  			TeXworks is 'n omgewing vir die skep van TeX (LaTeX, ConTeXt, ens.) dokumente, met 'n
