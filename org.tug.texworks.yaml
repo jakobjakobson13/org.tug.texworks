@@ -141,8 +141,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/TeXworks/texworks.git
-        tag: release-0.6.8
-        commit: 6b1c6ab2569e0f72d91871cad3311f4d12a3076f
+        tag: release-0.6.9
+        commit: 68a2e99cffbbf38f2e210d67d9a522acf77fdf6b
       - type: patch
         path: appdata.patch
     buildsystem: cmake-ninja
